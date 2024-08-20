@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as petService from './services/petService';
 import PetList from './components/PetList';
+import PetDetail from './components/PetDetail';
 
 const App = () => {
   const [petList, setPetList] = useState([]);
@@ -29,6 +30,7 @@ const App = () => {
     <>
       <h1>Hello World</h1>
       <PetList petList={petList} updateSelected={updateSelected} />
+      <PetDetail selected={selected} />
     </>
   );
 };
