@@ -4,6 +4,7 @@ import PetList from './components/PetList';
 
 const App = () => {
   const [petList, setPetList] = useState([]);
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -20,10 +21,14 @@ const App = () => {
     fetchPets();
   }, []);
 
+  const updateSelected = pet => {
+    setSelected(pet);
+  };
+
   return (
     <>
       <h1>Hello World</h1>
-      <PetList petList={petList} />
+      <PetList petList={petList} updateSelected={updateSelected} />
     </>
   );
 };
