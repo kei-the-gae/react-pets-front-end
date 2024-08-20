@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const PetForm = ({ handleAddPet, selected }) => {
+const PetForm = ({ handleAddPet, handleUpdatePet, selected }) => {
     const initialState = {
         name: '',
         age: '',
@@ -12,14 +12,18 @@ const PetForm = ({ handleAddPet, selected }) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmitForm = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        handleAddPet(formData);
+        if (selected) {
+            handleUpdatePet(formData, selected._id);
+        } else {
+            handleAddPet(formData);
+        };
     };
 
     return (
         <div>
-            <form onSubmit={handleSubmitForm}>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="name"> Name </label>
                 <input
                     id="name"

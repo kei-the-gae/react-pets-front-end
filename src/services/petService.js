@@ -24,4 +24,19 @@ const create = async (formData) => {
     };
 };
 
-export { index, create };
+const updatePet = async (formData, petId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${petId}`, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        return res.json();
+    } catch (err) {
+        console.log(err);
+    };
+};
+
+export { index, create, updatePet };
