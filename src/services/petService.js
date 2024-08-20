@@ -9,7 +9,7 @@ const index = async () => {
     };
 };
 
-const create = async () => {
+const create = async (formData) => {
     try {
         const res = await fetch(BASE_URL, {
             method: 'post',
