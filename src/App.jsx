@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as petService from './services/petService';
+import PetList from './components/PetList';
 
 const App = () => {
   const [petList, setPetList] = useState([]);
@@ -19,7 +20,12 @@ const App = () => {
     fetchPets();
   }, []);
 
-  return <h1>Hello world!</h1>
+  return (
+    <>
+      <h1>Hello World</h1>
+      <PetList petList={petList} />
+    </>
+  );
 };
 
 export default App;
